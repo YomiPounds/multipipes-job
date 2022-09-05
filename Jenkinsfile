@@ -29,7 +29,7 @@ pipeline{
             paralle{
                 stage('multipipe-test'){
                     steps{
-                        echo "another test"
+                        echo "another test!!!!!"
                     }
                 }
             }
