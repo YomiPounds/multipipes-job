@@ -25,14 +25,14 @@ pipeline{
                 echo "I am now a big big boy"
             }
         }
-        stage('another-job'){
-            paralle{
+        stage('parallel-job'){
+            parallel{
                 stage('multipipe-test'){
                     steps{
-                        echo "another test!!!!!"
+                        echo "another test!!!!!!"
                     }
                 }
-                stage('second-parajob){
+                stage('second-parajob'){
                     steps{
                         sh 'lscpu'
                     }
