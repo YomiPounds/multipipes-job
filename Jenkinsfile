@@ -25,5 +25,14 @@ pipeline{
                 echo "I am now a big big boy"
             }
         }
+        stage('another-parallel'){
+            paralle{
+                stage('multipipe-test'){
+                    steps{
+                        echo "another test"
+                    }
+                }
+            }
+        }
     }
 }
