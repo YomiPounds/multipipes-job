@@ -32,7 +32,7 @@ pipeline{
                         echo "another test!!!!!"
                     }
                 }
-                stage('second-parajob){
+                stage('second-parajob'){
                     steps{
                         sh 'lscpu'
                     }
