@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('chkout'){
             steps{
-               checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinsgit', url: 'https://github.com/YomiPounds/parallel-pipeline.git']]])
+               checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinsgit', url: 'https://github.com/YomiPounds/multipipes-job.git']]])
             }
         }
         stage('paralle-job'){
