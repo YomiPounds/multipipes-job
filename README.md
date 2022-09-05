@@ -1,1 +1,1 @@
-# multipipes-job
+# parallel-pipeline
