@@ -1,3 +1,4 @@
+properties([parameters([choice(choices: ['us-east-1', 'us-east-2', 'us-west-1'], description: 'regions to be enabled', name: 'region')])])
 pipeline{
     agent any 
     stages{
@@ -6,37 +7,24 @@ pipeline{
                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinsgit', url: 'https://github.com/YomiPounds/multipipes-job.git']]])
             }
         }
-        stage('paralle-job'){
-            parallel{
-                stage('sub-job1'){
-                    steps{
-                        echo "I am a senior and well trained Devops Engineer"
-                    }
-                }
-                stage('sub-job2'){
-                    steps{
-                        echo "I am a big senior Devops Engineer!!!!"
-                    }
-                }
-            }
-        }
-        stage('mainjob-2'){
+        stage('terraform init'){
             steps{
-                echo "I am now a big big boy"
+                sh 'terraform init'
             }
         }
-        stage('parallel-job'){
-            parallel{
-                stage('multipipe-test'){
-                    steps{
-                        echo "another test!!!!!!"
-                    }
-                }
-                stage('second-parajob'){
-                    steps{
-                        sh 'lscpu'
-                    }
-                }
+         stage('terraform validate'){
+            steps{
+                sh 'terraform validate'
+            }
+        }
+        stage('terraform plan'){
+            steps{
+                sh 'terraform plan'
+            }
+        }
+        stage('second-parajob'){
+            steps{
+                sh 'terraform apply -auto-approve'
             }
         }
     }
